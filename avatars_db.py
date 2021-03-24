@@ -21,14 +21,14 @@ class AvatarsBase(DataBase):
         """Adds avatar into the database"""
         self.cur.execute(f"INSERT INTO {self.table_name} VALUES ('{avatar.id}', '{avatar.avatar}')")
 
-    def get_avatar(self, id: int):
+    def get_avatars(self):
         """Returns student by id"""
-        self.cur.execute(f"SELECT * FROM {self.table_name} WHERE id={id}")
-        result = self.cur.fetchone()
+        self.cur.execute(f"SELECT * FROM {self.table_name}")
+        result = self.cur.fetchall()
         if result:
-            return Avatar(**result)
+            return [Avatar(*tuple) for tuple in result]
         else:
-            return ''
+            return None
 
     def delete_avatar(self, id: int):
         """Deletes avatar by id"""
