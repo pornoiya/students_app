@@ -26,6 +26,13 @@ curl --header "Content-Type: application/json" \
   --data '{"id":"212","full_name":"Абукаров Алексей Васильевич", "rating": 23, "age": 21, "photo_link": "link", "speciality": "Математика", "group": "МТ-201", "sex": "m", "fav_colour": "black"}' \
   http://localhost:8080/students/api/v1.0/students_list/
 ```
+добавить аватар
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"id":"1","avatar":""}' \
+  http://213.189.218.32:8080/students/api/v1.0/students_list/upload
+```
 
 ## Автор
 @pornoiya
