@@ -65,6 +65,7 @@ def handle_student_request():
 def delete_student_by_id(id: int):
     try:
         db.delete_student_by_id(id)
+        avatar_base.delete_avatar(db.get_student_by_id(id).photo)
         return jsonify({"message": "Successfully deleted"}), 200
     except errors.StudentNotFound as e:
         return make_response(jsonify({"error": e.message}), e.code)
